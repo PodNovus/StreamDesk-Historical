@@ -81,6 +81,13 @@ namespace StreamDesk.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap application_side_tree {
+            get {
+                object obj = ResourceManager.GetObject("application_side_tree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap comment {
             get {
                 object obj = ResourceManager.GetObject("comment", resourceCulture);
@@ -91,6 +98,13 @@ namespace StreamDesk.Properties {
         internal static System.Drawing.Bitmap cross {
             get {
                 object obj = ResourceManager.GetObject("cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap database_refresh {
+            get {
+                object obj = ResourceManager.GetObject("database_refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

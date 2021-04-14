@@ -24,7 +24,7 @@ namespace StreamDesk.Framework.AppCore
         public static string path = Path.Combine (
             Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "streamdesk.db");
         public static string path2 = Path.Combine(
-    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "streamdesk-settings.db");
+    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "streamdesk-cache.db");
 
         private static Dictionary<string, Dictionary<string, string>> Providers;
         private static SQLiteConnection SettingsDB;
@@ -40,22 +40,22 @@ namespace StreamDesk.Framework.AppCore
             get { return StreamEmbeds; }
         }
 
-        public static void Initialize () {
+        public static void Initialize (bool useCache) {
             Providers = new Dictionary<string, Dictionary<string, string>> ();
             Streams = new Dictionary<string, Dictionary<string, Dictionary<string, string>>> ();
             StreamEmbeds = new Dictionary<string, string> ();
             ChatEmbeds = new Dictionary<string, Dictionary<string, string>> ();
-            if (File.Exists (path)) {
+            var actPath = (useCache == true ? path2 : path);
+            if (File.Exists(actPath))
+            {
                 StreamDeskDB =
-                    new SQLiteConnection (String.Format ("Data Source={0};Compress=True;Synchronous=Off", path));
+                    new SQLiteConnection(String.Format("Data Source={0};Compress=True;Synchronous=Off", actPath));
                 StreamDeskDB.Open ();
 
                 UpdatePrividers ();
                 UpdateStreams ();
                 UpdateStreamEmbeds ();
                 UpdateChatEmbeds ();
-            } else {
-                Update ();
             }
         }
 
@@ -179,12 +179,15 @@ namespace StreamDesk.Framework.AppCore
                 StreamDeskDB.Close ();
             } catch (NullReferenceException) {}
             try {
+                try { File.Copy(path, path2, true); }
+                catch { }
                 var m = new WebClient ();
-                //m.CachePolicy = new RequestCachePolicy (RequestCacheLevel.BypassCache);
+                m.CachePolicy = new RequestCachePolicy (RequestCacheLevel.BypassCache);
                 m.DownloadFile (downloadpath, path);
-                Initialize ();
+                Initialize (false);
                 return true;
             } catch (WebException) {
+                Initialize(true);
                 return false;
             }
         }

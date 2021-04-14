@@ -164,7 +164,8 @@ namespace StreamDesk {
             Process.Start (url.ToString ());
         }
 
-        public void streamClick (object sender, EventArgs e) {
+        public void streamClick(object sender, EventArgs e)
+        {
             if (panel1.Visible)
             {
                 webBrowser.Visible = true;
@@ -172,55 +173,77 @@ namespace StreamDesk {
                 AcceptButton = null;
             }
             toolStripButton3.Visible = true;
-            var menu = (ToolStripMenuItem) sender;
-            var tag = (string[]) menu.Tag;
-            var wc = new WebClient ();
+            var menu = (ToolStripMenuItem)sender;
+            var tag = (string[])menu.Tag;
+            var wc = new WebClient();
 
-            title = menu.Text;
-            url = tag[1];
-            description = tag[8];
-            provider = tag[10];
+            if (tag[0] != "DELETE")
+            {
+                title = menu.Text;
+                url = tag[1];
+                description = tag[8];
+                provider = tag[10];
 
-            if (wc.DownloadString (String.Format ("http://127.0.0.1:9898/+is_stream_type/{0}", tag[3])) == "True") {
-                webBrowser.Navigate (String.Format ("http://127.0.0.1:9898/+stream/{0}/{1}", tag[3], tag[4]));
-                Text = tag[0] + " > " + menu.Text + " - " + AppName;
-            } else {
-                MessageBox.Show ("Unrecognized stream type " + tag[3] + "!", "Stream error", MessageBoxButtons.OK,
-                                 MessageBoxIcon.Hand);
-                Text = AppName;
-            }
+                if (wc.DownloadString(String.Format("http://127.0.0.1:9898/+is_stream_type/{0}", tag[3])) == "True")
+                {
+                    webBrowser.Navigate(String.Format("http://127.0.0.1:9898/+stream/{0}/{1}", tag[3], tag[4]));
+                    Text = tag[0] + " > " + menu.Text + " - " + AppName;
+                }
+                else
+                {
+                    MessageBox.Show("Unrecognized stream type " + tag[3] + "!", "Stream error", MessageBoxButtons.OK,
+                                     MessageBoxIcon.Hand);
+                    Text = AppName;
+                }
 
-            if (tag[6] != "none") {
-                var strArray2 = new string[] {
+                if (tag[6] != "none")
+                {
+                    var strArray2 = new string[] {
                                                  tag[6], tag[7], tag[9]
                                              };
-                if (tag[8] == null) chatViaIRCClientToolStripMenuItem.Visible = false;
-                else chatViaIRCClientToolStripMenuItem.Visible = true;
+                    if (tag[8] == null) chatViaIRCClientToolStripMenuItem.Visible = false;
+                    else chatViaIRCClientToolStripMenuItem.Visible = true;
 
-                pbChat.Tag = strArray2;
-                pbChat.Visible = true;
-                if (strArray2[0] == "chat_justintv") {
-                    pbChat.Text = "Justin.TV";
-                    chatViaIRCClientToolStripMenuItem.Visible = false;
-                } else {
-                    pbChat.Text = "Web Chat";
-                    chatViaIRCClientToolStripMenuItem.Visible = true;
+                    pbChat.Tag = strArray2;
+                    pbChat.Visible = true;
+                    if (strArray2[0] == "chat_justintv")
+                    {
+                        pbChat.Text = "Justin.TV";
+                        chatViaIRCClientToolStripMenuItem.Visible = false;
+                    }
+                    else
+                    {
+                        pbChat.Text = "Web Chat";
+                        chatViaIRCClientToolStripMenuItem.Visible = true;
+                    }
+                    toolStripDropDownButton1.Visible = true;
                 }
-                toolStripDropDownButton1.Visible = true;
-            } else {
-                toolStripDropDownButton1.Visible = false;
+                else
+                {
+                    toolStripDropDownButton1.Visible = false;
+                }
+                if (StreamDesk.Properties.Settings.Default.VideoResize)
+                {
+                    int getWebBoundsWidth;
+                    if (sContainer.Panel1Collapsed == true)
+                    {
+                        getWebBoundsWidth = 0;
+                    }
+                    else
+                    {
+                        getWebBoundsWidth = tvStreams.Width + 3;
+                    }
+                    int getWidth = int.Parse(tag[2].Split('x')[0]);
+                    int getHeight = int.Parse(tag[2].Split('x')[1]);
+                    Height = (getHeight + 46) + 36;
+                    Width = (getWidth + getWebBoundsWidth) + 16;
+                }
             }
-            if (StreamDesk.Properties.Settings.Default.VideoResize) {
-                int getWebBoundsWidth;
-                if (sContainer.Panel1Collapsed == true) {
-                    getWebBoundsWidth = 0;
-                } else {
-                    getWebBoundsWidth = tvStreams.Width + 3;
-                }
-                int getWidth = int.Parse (tag[2].Split ('x')[0]);
-                int getHeight = int.Parse (tag[2].Split ('x')[1]);
-                Height = (getHeight + 46) + 36;
-                Width = (getWidth + getWebBoundsWidth) + 16;
+            else
+            {
+                MessageBox.Show(String.Format("The stream {0} of provider {1} is no longer available.", tag[2], tag[1]), "StreamDesk", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Framework.AppCore.Settings.Instance.FavsDB.DeleteStream(tag[1], tag[2]);
+                GenerateFavMenu();
             }
         }
 
@@ -427,6 +450,7 @@ namespace StreamDesk {
         private void updateStreamDeskStreamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Updator().ShowDialog();
+            GenerateFavMenu();
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

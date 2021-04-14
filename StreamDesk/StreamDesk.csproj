@@ -227,6 +227,9 @@
     <None Include="Resources\add.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\star.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\application_side_tree.png" />
+    <None Include="Resources\database_refresh.png" />
     <Content Include="sd.ico" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

@@ -50,23 +50,28 @@ namespace FireIRC.Resources.Forms {
         }
 
         public void CheckForUpdates (string application, string os) {
-            var update = new XmlDocument ();
-            update.Load (UpdateXMLURL);
-            XmlNode appnode = update.SelectSingleNode ("/NasuTekUpdateNotifier/" + application);
-            XmlNode updatenode = update.SelectSingleNode ("/NasuTekUpdateNotifier/" + application + "/" + os);
-            Version currentver = GetType ().Assembly.GetName ().Version;
-            var newver = new Version (updatenode.Attributes["version"].Value);
-            button3.Visible = Reverse (Convert.ToBoolean (updatenode.Attributes["noskip"].Value));
-            if (currentver < newver) {
-                label1.Text = String.Format (label1.Text, appnode.Attributes["friendlyname"].Value);
-                label2.Text = String.Format (label2.Text, currentver.ToString ());
-                label3.Text = String.Format (label3.Text, newver.ToString ());
-                webBrowser1.Navigate ("about:blank");
-                webBrowser1.Document.Write (updatenode.InnerText);
-                webBrowser1.Refresh ();
-                url = updatenode.Attributes["url"].Value;
-                ShowDialog ();
+            try
+            {
+                var update = new XmlDocument();
+                update.Load(UpdateXMLURL);
+                XmlNode appnode = update.SelectSingleNode("/NasuTekUpdateNotifier/" + application);
+                XmlNode updatenode = update.SelectSingleNode("/NasuTekUpdateNotifier/" + application + "/" + os);
+                Version currentver = GetType().Assembly.GetName().Version;
+                var newver = new Version(updatenode.Attributes["version"].Value);
+                button3.Visible = Reverse(Convert.ToBoolean(updatenode.Attributes["noskip"].Value));
+                if (currentver < newver)
+                {
+                    label1.Text = String.Format(label1.Text, appnode.Attributes["friendlyname"].Value);
+                    label2.Text = String.Format(label2.Text, currentver.ToString());
+                    label3.Text = String.Format(label3.Text, newver.ToString());
+                    webBrowser1.Navigate("about:blank");
+                    webBrowser1.Document.Write(updatenode.InnerText);
+                    webBrowser1.Refresh();
+                    url = updatenode.Attributes["url"].Value;
+                    ShowDialog();
+                }
             }
+            catch { }
         }
 
         private void button2_Click (object sender, EventArgs e) {

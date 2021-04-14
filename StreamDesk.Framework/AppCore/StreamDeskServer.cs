@@ -67,7 +67,7 @@ namespace StreamDesk.Framework.AppCore
         /// 
         public void Start()
         {
-            StreamDeskDBControl.Initialize();
+            StreamDeskDBControl.Initialize(false);
 
             // Clear the thread end events
             for (int lcv = 0; lcv < numThreads; lcv++)

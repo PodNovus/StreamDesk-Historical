@@ -31,7 +31,13 @@ namespace StreamDesk.Framework.AppCore
                         ToolStripMenuItem streamItem = new ToolStripMenuItem(j);
                         streamItem.Click += new EventHandler(clickhandle);
                         streamItem.Tag = SDStreams.GetStreamTag(j, i.Key);
-                        item.DropDownItems.Add(streamItem);
+                        if (streamItem.Tag == null)
+                        {
+                            streamItem.Tag = new string[] { "DELETE", i.Key, j };
+                            item.DropDownItems.Add(streamItem);
+                        }
+                        else
+                            item.DropDownItems.Add(streamItem);
                     }
                     menu.Add(item);
                 }
