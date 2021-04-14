@@ -7,51 +7,31 @@
 
 #region Using Directives
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.ServiceProcess;
-using System.Windows.Forms;
-using Microsoft.VisualBasic;
-using StreamDesk.HTTPDataServer;
-using System.Diagnostics;
-using System.Threading;
-using System.Net.Sockets;
+using StreamDesk.Framework;
 using System.Net;
-
+using StreamDesk.Framework.AppCore;
 #endregion
 
 namespace StreamDesk
 {
     internal static class Program
     {
+        internal static bool isQuitting;
+        internal static readonly string license = "2441B4BB1545D95A5B156DFBFDCA932BC3C085B7";
+
+        [STAThread]
         private static void Main(string[] args)
         {
-            if (args.Length == 0)
+            Licence.InitLicence(license);
+
+            try
             {
-                Process[] processes = Process.GetProcessesByName("StreamDesk.Core");
-                if (processes.Length == 1)
-                {
-                    Server server = new Server();
-                    server.Start();
-                }
-                else { }
+                var wc = new WebClient();
+                wc.DownloadString(new Uri("http://localhost:9898/+check"));
             }
-            else
+            catch
             {
-                if (args[0] == "/kill")
-                {
-                    Process[] processes = Process.GetProcessesByName("StreamDesk.Core");
-                    foreach (Process p in processes)
-                    {
-                        p.Kill();
-                        Thread.Sleep(1000);
-                    }
-                }
-                if (args[0] == "/force")
-                {
-                    Server server = new Server();
-                    server.Start();
-                }
+                ServerControl.Start();
             }
         }
     }

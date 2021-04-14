@@ -37,10 +37,9 @@
             // 
             this.ClientSize = new System.Drawing.Size(601, 327);
             this.Controls.Add(this.wbWebIRC);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmChat";
-            this.Text = "StreamDesk Chat";
+            this.Text = "Chat - StreamDesk";
             this.Load += new System.EventHandler(this.frmChat_Load);
             this.ResumeLayout(false);
 

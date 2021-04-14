@@ -27,13 +27,15 @@ namespace StreamDesk {
         private IContainer components;
         private SplitContainer sContainer;
         private string streamHTML = "O_O";
-        private string title, provider, description, url;
+        private string title, provider, description, url, windowTitle;
         private bool chat, info;
         private ToolTip ttChat;
         private TreeView tvStreams;
         private GeckoWebBrowser webBrowser = new GeckoWebBrowser ();
-        public frmMain () {
+        private bool newWindow;
+        public frmMain (bool _newWindow) {
             InitializeComponent ();
+            newWindow = _newWindow;
             webBrowser.Dock = DockStyle.Fill;
             wbStream.Controls.Add (webBrowser);
         }
@@ -56,6 +58,7 @@ namespace StreamDesk {
         }
 
         private void frmMain_Load (object sender, EventArgs e) {
+            GenerateFavMenu();
             sContainer.Panel1Collapsed = Reverse (StreamDesk.Properties.Settings.Default.ShowTreeView);
             treeMenuToolStripMenuItem.Checked = StreamDesk.Properties.Settings.Default.ShowTreeView;
 
@@ -73,16 +76,23 @@ namespace StreamDesk {
             }
              */
             sContainer.SplitterWidth = 3;
-            if (StreamDesk.Properties.Settings.Default.GetStreamsAtStartup) {
-                new Updator ().ShowDialog ();
+            if (!newWindow)
+            {
+                if (StreamDesk.Properties.Settings.Default.GetStreamsAtStartup)
+                {
+                    new Updator().ShowDialog();
+                }
             }
             base.TopMost = StreamDesk.Properties.Settings.Default.VideoTopMost;
             toolStripDropDownButton1.Visible = false;
             ReadStreams ();
-            var un = new UpdateNotifier ();
-            un.ImageIcon = Resources._64;
-            un.UpdateXMLURL = "http://streamdesk.ca/update.xml";
-            un.CheckForUpdates ("StreamDesk", "Windows");
+            if (!newWindow)
+            {
+                var un = new UpdateNotifier();
+                un.ImageIcon = Resources._64;
+                un.UpdateXMLURL = "http://streamdesk.ca/update.xml";
+                un.CheckForUpdates("StreamDesk", "Windows");
+            }
         }
 
         private void kComputerZoneToolStripMenuItem1_Click (object sender, EventArgs e) {
@@ -355,6 +365,8 @@ namespace StreamDesk {
 
         private void standardSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            windowTitle = Text;
+            Text = "Search - StreamDesk";
             curHeight = Height;
             curWidth = Width;
             chat = toolStripDropDownButton1.Visible;
@@ -376,6 +388,7 @@ namespace StreamDesk {
         {
             Height = curHeight;
             Width = curWidth;
+            Text = windowTitle;
             toolStripButton3.Visible = info;
             toolStripDropDownButton1.Visible = chat;
 
@@ -414,6 +427,51 @@ namespace StreamDesk {
         private void updateStreamDeskStreamsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Updator().ShowDialog();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            new frmMain(true).Show();
+        }
+
+        private void GenerateFavMenu()
+        {
+            toolStripDropDownButton5.DropDownItems.Clear();
+
+            ToolStripMenuItem addFav = new ToolStripMenuItem("Add");
+            addFav.Click += new EventHandler(addFav_Click);
+            addFav.Image = Resources.add;
+            toolStripDropDownButton5.DropDownItems.Add(addFav);
+            ToolStripMenuItem orgFav = new ToolStripMenuItem("Delete");
+            orgFav.Click += new EventHandler(orgFav_Click);
+            orgFav.Image = Resources.delete;
+            toolStripDropDownButton5.DropDownItems.Add(orgFav);
+            toolStripDropDownButton5.DropDownItems.Add(new ToolStripSeparator());
+            foreach (ToolStripMenuItem i in StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.GetFavStreams(streamClick))
+            {              
+                toolStripDropDownButton5.DropDownItems.Add(i);
+            }
+        }
+
+        void orgFav_Click(object sender, EventArgs e)
+        {
+            if (title != null && provider != null)
+            {
+                StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.DeleteStream(provider, title);
+                GenerateFavMenu();
+            }
+        }
+
+        void addFav_Click(object sender, EventArgs e)
+        {
+            if (title != null && provider != null)
+            {
+                if (!StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.StreamExist(provider, title))
+                {
+                    StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.FavStreams.Add(new StreamDesk.Framework.AppCore.FavStream { Name = title, Provider = provider });
+                    GenerateFavMenu();
+                }
+            }
         }
     }
 }

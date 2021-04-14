@@ -51,5 +51,10 @@ namespace StreamDesk
         {
             Process.Start(e.Uri.ToString());
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

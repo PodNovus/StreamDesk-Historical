@@ -74,6 +74,7 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\bin\</OutputPath>
@@ -97,25 +98,7 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <BaseAddress>285212672</BaseAddress>
-    <FileAlignment>4096</FileAlignment>
-    <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <BaseAddress>285212672</BaseAddress>
-    <Optimize>true</Optimize>
-    <FileAlignment>4096</FileAlignment>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
@@ -240,6 +223,10 @@
     <None Include="Resources\webcam.png" />
     <None Include="Resources\information.png" />
     <None Include="Resources\help.png" />
+    <None Include="Resources\application_add.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\star.png" />
     <Content Include="sd.ico" />
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -249,6 +236,9 @@
     <None Include="Resources\internet-group-chat.png" />
     <None Include="Resources\comment.png" />
     <None Include="Resources\64.png" />
+    <None Include="SD.crt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AppTools\frmSettings.resx">
@@ -294,7 +284,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)Tools\NSLicGen.exe" "$(TargetPath)" "$(TargetDir)Licencee.xml"
+"$(SolutionDir)Tools\XmlSigner.exe" "$(SolutionDir)KtecK_Labs.p12" "$(TargetDir)Licencee.xml"</PostBuildEvent>
   </PropertyGroup>
 </Project>

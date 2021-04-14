@@ -67,6 +67,20 @@ namespace StreamDesk.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap application_add {
+            get {
+                object obj = ResourceManager.GetObject("application_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap comment {
             get {
                 object obj = ResourceManager.GetObject("comment", resourceCulture);
@@ -77,6 +91,13 @@ namespace StreamDesk.Properties {
         internal static System.Drawing.Bitmap cross {
             get {
                 object obj = ResourceManager.GetObject("cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -92,36 +113,6 @@ namespace StreamDesk.Properties {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HTTP/1.1 200 OK
-        ///Date: Mon, 23 May 2005 22:38:34 GMT
-        ///Server: StreamDesk Data Server 1.1
-        ///Content-Length: {0}
-        ///Content-Type: text/html
-        ///
-        ///.
-        /// </summary>
-        internal static string HTTPHeader {
-            get {
-                return ResourceManager.GetString("HTTPHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HTTP/1.1 200 OK
-        ///Date: Mon, 23 May 2005 22:38:34 GMT
-        ///Server: StreamDesk Data Server 1.1
-        ///Content-Length: {0}
-        ///Content-Type: text/xml
-        ///
-        ///.
-        /// </summary>
-        internal static string HTTPHeaderXML {
-            get {
-                return ResourceManager.GetString("HTTPHeaderXML", resourceCulture);
             }
         }
         
@@ -157,6 +148,13 @@ namespace StreamDesk.Properties {
             get {
                 object obj = ResourceManager.GetObject("sd", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap star {
+            get {
+                object obj = ResourceManager.GetObject("star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

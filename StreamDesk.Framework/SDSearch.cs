@@ -7,7 +7,6 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
 using System.Xml;
@@ -36,21 +35,24 @@ namespace StreamDesk.Framework
         /// </example>
         public static Dictionary<string, Dictionary<string, string>> GetSearchParms(string searchParms)
         {
-            var ret = new Dictionary<string, Dictionary<string, string>>();
-            var wc = new WebClient();
-            string data = wc.DownloadString(string.Format("http://localhost:9898/+search/{0}", searchParms));
-            var doc = new XmlDocument();
-            doc.LoadXml(data);
-
-            foreach (XmlNode i in doc.SelectNodes("/searchresults/stream"))
+            if (Licence.Licencee != null)
             {
-                ret.Add(i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value, new Dictionary<string, string>());
-                ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Name", i.Attributes["Name"].Value);
-                ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Description", i.Attributes["Description"].Value);
-                ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Provider", i.Attributes["Provider"].Value);
-            }
+                var ret = new Dictionary<string, Dictionary<string, string>>();
+                var wc = new WebClient();
+                string data = wc.DownloadString(string.Format("http://localhost:9898/+search/{0}", searchParms));
+                var doc = new XmlDocument();
+                doc.LoadXml(data);
 
-            return ret;
+                foreach (XmlNode i in doc.SelectNodes("/searchresults/stream"))
+                {
+                    ret.Add(i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value, new Dictionary<string, string>());
+                    ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Name", i.Attributes["Name"].Value);
+                    ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Description", i.Attributes["Description"].Value);
+                    ret[i.Attributes["Name"].Value + "-" + i.Attributes["Provider"].Value].Add("Provider", i.Attributes["Provider"].Value);
+                }
+                return ret;
+            }
+            else throw new LicenceException();
         }
     }
 }

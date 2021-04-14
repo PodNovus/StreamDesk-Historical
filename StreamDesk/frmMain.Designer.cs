@@ -42,21 +42,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.streamsToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton5 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.pbChat = new System.Windows.Forms.ToolStripMenuItem();
             this.chatViaIRCClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
             this.standardSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.treeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.updateStreamDeskStreamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.liveHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iRCChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutStreamDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.sContainer)).BeginInit();
             this.sContainer.Panel1.SuspendLayout();
@@ -160,7 +160,6 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(500, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -210,9 +209,11 @@
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.streamsToolStripMenuItem,
+            this.toolStripButton4,
+            this.toolStripButton3,
+            this.toolStripDropDownButton5,
             this.toolStripDropDownButton1,
             this.toolStripDropDownButton4,
-            this.toolStripButton3,
             this.toolStripDropDownButton2,
             this.toolStripDropDownButton3});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
@@ -230,6 +231,36 @@
             this.streamsToolStripMenuItem.Size = new System.Drawing.Size(29, 22);
             this.streamsToolStripMenuItem.Text = "Streams";
             // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::StreamDesk.Properties.Resources.application_add;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "New Window";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::StreamDesk.Properties.Resources.information;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Stream Information";
+            this.toolStripButton3.Visible = false;
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click_1);
+            // 
+            // toolStripDropDownButton5
+            // 
+            this.toolStripDropDownButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton5.Image = global::StreamDesk.Properties.Resources.star;
+            this.toolStripDropDownButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton5.Name = "toolStripDropDownButton5";
+            this.toolStripDropDownButton5.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton5.Text = "Favorites";
+            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -246,7 +277,7 @@
             // 
             this.pbChat.Image = global::StreamDesk.Properties.Resources.internet_group_chat;
             this.pbChat.Name = "pbChat";
-            this.pbChat.Size = new System.Drawing.Size(152, 22);
+            this.pbChat.Size = new System.Drawing.Size(126, 22);
             this.pbChat.Text = "pbChat";
             this.pbChat.Click += new System.EventHandler(this.pbChat_Click);
             // 
@@ -254,7 +285,7 @@
             // 
             this.chatViaIRCClientToolStripMenuItem.Image = global::StreamDesk.Properties.Resources.internet_group_chat;
             this.chatViaIRCClientToolStripMenuItem.Name = "chatViaIRCClientToolStripMenuItem";
-            this.chatViaIRCClientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.chatViaIRCClientToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.chatViaIRCClientToolStripMenuItem.Text = "IRC Client";
             this.chatViaIRCClientToolStripMenuItem.Click += new System.EventHandler(this.chatViaIRCClientToolStripMenuItem_Click);
             // 
@@ -277,17 +308,6 @@
             this.standardSearchToolStripMenuItem.Text = "Standard Search";
             this.standardSearchToolStripMenuItem.Click += new System.EventHandler(this.standardSearchToolStripMenuItem_Click);
             // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::StreamDesk.Properties.Resources.information;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Stream Information";
-            this.toolStripButton3.Visible = false;
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click_1);
-            // 
             // toolStripDropDownButton2
             // 
             this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -302,8 +322,8 @@
             // treeMenuToolStripMenuItem
             // 
             this.treeMenuToolStripMenuItem.Name = "treeMenuToolStripMenuItem";
-            this.treeMenuToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.treeMenuToolStripMenuItem.Text = "Show Tree Menu";
+            this.treeMenuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.treeMenuToolStripMenuItem.Text = "Show Tree View";
             this.treeMenuToolStripMenuItem.Click += new System.EventHandler(this.treeMenuToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton3
@@ -311,9 +331,7 @@
             this.toolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.updateStreamDeskStreamsToolStripMenuItem,
-            this.toolStripMenuItem1,
             this.liveHelpToolStripMenuItem,
-            this.toolStripMenuItem2,
             this.aboutStreamDeskToolStripMenuItem});
             this.toolStripDropDownButton3.Image = global::StreamDesk.Properties.Resources.help;
             this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -324,14 +342,9 @@
             // updateStreamDeskStreamsToolStripMenuItem
             // 
             this.updateStreamDeskStreamsToolStripMenuItem.Name = "updateStreamDeskStreamsToolStripMenuItem";
-            this.updateStreamDeskStreamsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.updateStreamDeskStreamsToolStripMenuItem.Text = "Update Stream List";
+            this.updateStreamDeskStreamsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.updateStreamDeskStreamsToolStripMenuItem.Text = "Update Streams Database";
             this.updateStreamDeskStreamsToolStripMenuItem.Click += new System.EventHandler(this.updateStreamDeskStreamsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(178, 6);
             // 
             // liveHelpToolStripMenuItem
             // 
@@ -339,7 +352,7 @@
             this.webChatToolStripMenuItem,
             this.iRCChatToolStripMenuItem});
             this.liveHelpToolStripMenuItem.Name = "liveHelpToolStripMenuItem";
-            this.liveHelpToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.liveHelpToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.liveHelpToolStripMenuItem.Text = "Live Help";
             // 
             // webChatToolStripMenuItem
@@ -358,15 +371,10 @@
             this.iRCChatToolStripMenuItem.Text = "IRC Chat";
             this.iRCChatToolStripMenuItem.Click += new System.EventHandler(this.iRCChatToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(178, 6);
-            // 
             // aboutStreamDeskToolStripMenuItem
             // 
             this.aboutStreamDeskToolStripMenuItem.Name = "aboutStreamDeskToolStripMenuItem";
-            this.aboutStreamDeskToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.aboutStreamDeskToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.aboutStreamDeskToolStripMenuItem.Text = "About StreamDesk...";
             this.aboutStreamDeskToolStripMenuItem.Click += new System.EventHandler(this.aboutStreamDeskToolStripMenuItem_Click_1);
             // 
@@ -421,11 +429,11 @@
         private ToolStripDropDownButton toolStripDropDownButton3;
         private ToolStripMenuItem aboutStreamDeskToolStripMenuItem;
         private ToolStripMenuItem updateStreamDeskStreamsToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem liveHelpToolStripMenuItem;
         private ToolStripMenuItem webChatToolStripMenuItem;
         private ToolStripMenuItem iRCChatToolStripMenuItem;
-        private ToolStripSeparator toolStripMenuItem2;
+        private ToolStripButton toolStripButton4;
+        private ToolStripDropDownButton toolStripDropDownButton5;
     }
 }
 
