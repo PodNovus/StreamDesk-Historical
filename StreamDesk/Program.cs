@@ -18,6 +18,7 @@ using System.Threading;
 using StreamDesk.Framework;
 using System.Net;
 using StreamDesk.Framework.AppCore;
+using StreamDesk.Framework.SDSettings;
 
 #endregion
 

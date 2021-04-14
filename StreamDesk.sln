@@ -1,60 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDesk.Core", "StreamDesk.Core\StreamDesk.Core.csproj", "{8A0D5FB2-4326-4521-91A2-6F47109B1688}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDesk", "StreamDesk\StreamDesk.csproj", "{CD48E228-8B2B-4FA8-A514-469DB1A177FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDesk.Framework", "StreamDesk.Framework\StreamDesk.Framework.csproj", "{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StreamDesk Client SDK", "StreamDesk Client SDK", "{1B3A6412-C740-4BFA-BCE1-411CFCB7829B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamDesk.Framework.WinForms", "StreamDesk.Framework.Winforms\StreamDesk.Framework.WinForms.csproj", "{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|Mixed Platforms = Debug|Mixed Platforms
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|Mixed Platforms = Release|Mixed Platforms
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CD48E228-8B2B-4FA8-A514-469DB1A177FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}.Release|x86.ActiveCfg = Release|Any CPU
+		{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FEC7EB59-4CE0-46DC-9AC2-5852D9778633} = {1B3A6412-C740-4BFA-BCE1-411CFCB7829B}
-		{8A0D5FB2-4326-4521-91A2-6F47109B1688} = {1B3A6412-C740-4BFA-BCE1-411CFCB7829B}
+		{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3} = {1B3A6412-C740-4BFA-BCE1-411CFCB7829B}
 	EndGlobalSection
 EndGlobal

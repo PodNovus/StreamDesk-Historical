@@ -12,7 +12,7 @@ namespace StreamDesk.Framework.AppCore
 
         public static void Start()
         {
-            if (Licence.Licencee != null)
+            if (Licence.GetLicencee() != null)
             {
                 if (serverInstance == null) serverInstance = new Server();
                 new Thread(serverInstance.Start).Start();
@@ -22,7 +22,7 @@ namespace StreamDesk.Framework.AppCore
 
         public static void Stop()
         {
-            if (Licence.Licencee != null)
+            if (Licence.GetLicencee() != null)
             {
                 serverInstance.Stop();
             }

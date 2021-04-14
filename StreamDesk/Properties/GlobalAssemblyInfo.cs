@@ -14,11 +14,11 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-[assembly: AssemblyVersion ("2.0.1.1")]
+[assembly: AssemblyVersion ("2.0.1.2")]
 [assembly: NeutralResourcesLanguage ("en-US")]
 [assembly: CompilationRelaxations (8)]
 [assembly: RuntimeCompatibility (WrapNonExceptionThrows = true)]
-[assembly: AssemblyFileVersion ("2.0.1.1")]
+[assembly: AssemblyFileVersion ("2.0.1.2")]
 [assembly: Debuggable (DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
 [assembly: AssemblyDescription ("Your portal into the world of live streams.")]
 [assembly: AssemblyConfiguration ("")]

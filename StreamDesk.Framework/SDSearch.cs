@@ -35,7 +35,7 @@ namespace StreamDesk.Framework
         /// </example>
         public static Dictionary<string, Dictionary<string, string>> GetSearchParms(string searchParms)
         {
-            if (Licence.Licencee != null)
+            if (Licence.GetLicencee() != null)
             {
                 var ret = new Dictionary<string, Dictionary<string, string>>();
                 var wc = new WebClient();

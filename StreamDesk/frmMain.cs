@@ -15,9 +15,10 @@ using FireIRC.Resources.Forms;
 using StreamDesk.Framework;
 using StreamDesk.Framework.WinForms;
 using StreamDesk.AppTools;
-using StreamDesk.Properties;
 using Skybound.Gecko;
 using System.Threading;
+using StreamDesk.Properties;
+using System.Drawing;
 
 #endregion
 
@@ -58,7 +59,6 @@ namespace StreamDesk {
         }
 
         private void frmMain_Load (object sender, EventArgs e) {
-            GenerateFavMenu();
             sContainer.Panel1Collapsed = Reverse (StreamDesk.Properties.Settings.Default.ShowTreeView);
             treeMenuToolStripMenuItem.Checked = StreamDesk.Properties.Settings.Default.ShowTreeView;
 
@@ -86,6 +86,7 @@ namespace StreamDesk {
             base.TopMost = StreamDesk.Properties.Settings.Default.VideoTopMost;
             toolStripDropDownButton1.Visible = false;
             ReadStreams ();
+            GenerateFavMenu();
             if (!newWindow)
             {
                 var un = new UpdateNotifier();
@@ -235,14 +236,13 @@ namespace StreamDesk {
                     }
                     int getWidth = int.Parse(tag[2].Split('x')[0]);
                     int getHeight = int.Parse(tag[2].Split('x')[1]);
-                    Height = (getHeight + 46) + 36;
-                    Width = (getWidth + getWebBoundsWidth) + 16;
+                    ClientSize = new Size(getWidth + getWebBoundsWidth, getHeight + toolStrip2.Height);
                 }
             }
             else
             {
                 MessageBox.Show(String.Format("The stream {0} of provider {1} is no longer available.", tag[2], tag[1]), "StreamDesk", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Framework.AppCore.Settings.Instance.FavsDB.DeleteStream(tag[1], tag[2]);
+                Framework.SDSettings.Settings.Instance.FavsDB.DeleteStream(tag[1], tag[2]);
                 GenerateFavMenu();
             }
         }
@@ -315,6 +315,7 @@ namespace StreamDesk {
         private void updateStreamListToolStripMenuItem_Click (object sender, EventArgs e) {
             new Updator ().ShowDialog ();
             ReadStreams ();
+            GenerateFavMenu();
         }
 
         private void quitToolStripMenuItem_Click (object sender, EventArgs e) {
@@ -451,6 +452,7 @@ namespace StreamDesk {
         {
             new Updator().ShowDialog();
             GenerateFavMenu();
+            ReadStreams();
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -471,7 +473,7 @@ namespace StreamDesk {
             orgFav.Image = Resources.delete;
             toolStripDropDownButton5.DropDownItems.Add(orgFav);
             toolStripDropDownButton5.DropDownItems.Add(new ToolStripSeparator());
-            foreach (ToolStripMenuItem i in StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.GetFavStreams(streamClick))
+            foreach (ToolStripMenuItem i in StreamDesk.Framework.WinForms.SDFavorates.GetFavStreams(streamClick))
             {              
                 toolStripDropDownButton5.DropDownItems.Add(i);
             }
@@ -481,7 +483,7 @@ namespace StreamDesk {
         {
             if (title != null && provider != null)
             {
-                StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.DeleteStream(provider, title);
+                StreamDesk.Framework.SDSettings.Settings.Instance.FavsDB.DeleteStream(provider, title);
                 GenerateFavMenu();
             }
         }
@@ -490,9 +492,9 @@ namespace StreamDesk {
         {
             if (title != null && provider != null)
             {
-                if (!StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.StreamExist(provider, title))
+                if (!StreamDesk.Framework.SDSettings.Settings.Instance.FavsDB.StreamExist(provider, title))
                 {
-                    StreamDesk.Framework.AppCore.Settings.Instance.FavsDB.FavStreams.Add(new StreamDesk.Framework.AppCore.FavStream { Name = title, Provider = provider });
+                    StreamDesk.Framework.SDSettings.Settings.Instance.FavsDB.FavStreams.Add(new StreamDesk.Framework.SDSettings.FavStream { Name = title, Provider = provider });
                     GenerateFavMenu();
                 }
             }

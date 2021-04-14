@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace StreamDesk.Framework.AppCore
+namespace StreamDesk.Framework.SDSettings
 {
     public class Settings
     {
@@ -13,7 +13,7 @@ namespace StreamDesk.Framework.AppCore
 
         public static void OpenSettings(string AppName)
         {
-            if (Licence.Licencee != null)
+            if (Licence.GetLicencee() != null)
             {
                 var settpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "StreamDesk Settings");
                 var userfile = Path.Combine(settpath, AppName + ".xml");
@@ -30,7 +30,7 @@ namespace StreamDesk.Framework.AppCore
 
         public static void SaveSettings(string AppName)
         {
-            if (Licence.Licencee != null)
+            if (Licence.GetLicencee() != null)
             {
                 var settpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "StreamDesk Settings");
                 var userfile = Path.Combine(settpath, AppName + ".xml");

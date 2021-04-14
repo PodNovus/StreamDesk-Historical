@@ -31,6 +31,8 @@ namespace StreamDesk.Framework
             }
         }
 //#endif
+
+        public static string GetLicencee() { return Licencee; }
     }
 
     public class LicenceException : Exception

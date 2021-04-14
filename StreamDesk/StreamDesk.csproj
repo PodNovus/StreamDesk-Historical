@@ -48,9 +48,10 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <NoWin32Manifest>true</NoWin32Manifest>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SignAssembly>false</SignAssembly>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\bin\</OutputPath>
@@ -278,6 +279,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StreamDesk.Framework.Winforms\StreamDesk.Framework.WinForms.csproj">
+      <Project>{B1D5DBCC-6937-4F10-8056-B36A26CEF6B3}</Project>
+      <Name>StreamDesk.Framework.WinForms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StreamDesk.Framework\StreamDesk.Framework.csproj">
       <Project>{FEC7EB59-4CE0-46DC-9AC2-5852D9778633}</Project>
       <Name>StreamDesk.Framework</Name>

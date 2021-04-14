@@ -58,7 +58,6 @@
             this.aboutStreamDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.treeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.sContainer)).BeginInit();
             this.sContainer.Panel1.SuspendLayout();
             this.sContainer.Panel2.SuspendLayout();
             this.sContainer.SuspendLayout();
@@ -394,7 +393,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.sContainer.Panel1.ResumeLayout(false);
             this.sContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sContainer)).EndInit();
+            
             this.sContainer.ResumeLayout(false);
             this.wbStream.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
