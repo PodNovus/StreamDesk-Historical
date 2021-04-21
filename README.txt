@@ -1,0 +1,1 @@
+This Branch contains any historical assets for StreamDesk like the original HTA's or any Mac codes. Some may not contain source code.
